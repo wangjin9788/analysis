@@ -1,0 +1,98 @@
+package com.jykj.user.controller;
+
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jykj.user.common.api.CommonResult;
+import com.jykj.user.common.security.DynamicSecurityMetadataSource;
+import com.jykj.user.entity.UmsResource;
+import com.jykj.user.service.IUmsResourceService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * <p>
+ * 后台资源表 前端控制器
+ * </p>
+ *
+ * @author 王进
+ * @since 2021-04-04
+ */
+@RestController
+@RequestMapping("/resource")
+public class UmsResourceController {
+    @Autowired
+    private IUmsResourceService resourceService;
+    @Autowired
+    private DynamicSecurityMetadataSource dynamicSecurityMetadataSource;
+
+    @ApiOperation("添加后台资源")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestBody UmsResource umsResource) {
+        int count = resourceService.create(umsResource);
+        dynamicSecurityMetadataSource.clearDataSource();
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("修改后台资源")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult update(@PathVariable Long id,
+                               @RequestBody UmsResource umsResource) {
+        int count = resourceService.update(id, umsResource);
+        dynamicSecurityMetadataSource.clearDataSource();
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("根据ID获取资源详情")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<UmsResource> getItem(@PathVariable Long id) {
+        UmsResource umsResource = resourceService.getItem(id);
+        return CommonResult.success(umsResource);
+    }
+
+    @ApiOperation("根据ID删除后台资源")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult delete(@PathVariable Long id) {
+        int count = resourceService.delete(id);
+        dynamicSecurityMetadataSource.clearDataSource();
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("分页模糊查询后台资源")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<Page<UmsResource>> list(@RequestParam(required = false) Long categoryId,
+                                                @RequestParam(required = false) String nameKeyword,
+                                                @RequestParam(required = false) String urlKeyword,
+                                                @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        Page<UmsResource> resourceList = resourceService.list(categoryId,nameKeyword, urlKeyword, pageSize, pageNum);
+        return CommonResult.success(resourceList);
+    }
+
+    @ApiOperation("查询所有后台资源")
+    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<UmsResource>> listAll() {
+        List<UmsResource> resourceList = resourceService.listAll();
+        return CommonResult.success(resourceList);
+    }
+}

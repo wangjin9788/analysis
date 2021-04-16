@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jykj.user.mapper.ExpRevenueMapper">
+    <select id="getRevenueList" resultType="com.jykj.user.dto.RevenueDataParam">
+        SELECT
+er.rid,er.money,er.create_id,DATE_FORMAT(er.create_time, "%Y-%m-%d") AS create_time,p.type_name
+FROM
+	exp_revenue er
+LEFT JOIN exp_pay_revenue_category p ON p.prcid = er.prcid
+        WHERE 1=1
+<if test="time!=null and time!=''">
+
+	and DATE_FORMAT(er.create_time,"%Y-%m-%d") =#{time}
+
+</if>
+    </select>
+</mapper>
