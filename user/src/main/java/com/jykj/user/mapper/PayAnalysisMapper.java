@@ -14,4 +14,8 @@ public interface PayAnalysisMapper {
     List<PayRevenuePieAnalysisVo> getPayPicAnalysis(@Param("time") String time);
 
     List<PayCategoryPicAnalysisVo> getPayCategoryAnalysis(@Param("time") String time);
+
+    List<Integer> getYearData();
+
+    List<Integer> getMonth();
 }

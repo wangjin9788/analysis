@@ -45,4 +45,14 @@ public class PayAnalysisServiceImpl  implements IPayAnalysisService {
     public List<PayCategoryPicAnalysisVo> getPayCategoryAnalysis(String time) {
         return analysisMapper.getPayCategoryAnalysis(time);
     }
+
+    @Override
+    public List<Integer> getYearData() {
+        return analysisMapper.getYearData();
+    }
+
+    @Override
+    public List<Integer> getMonth() {
+        return analysisMapper.getMonth();
+    }
 }

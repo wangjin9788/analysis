@@ -15,4 +15,7 @@ public interface IPayAnalysisService {
 
     List<PayCategoryPicAnalysisVo> getPayCategoryAnalysis( String time);
 
+    List<Integer> getYearData();
+
+    List<Integer> getMonth();
 }

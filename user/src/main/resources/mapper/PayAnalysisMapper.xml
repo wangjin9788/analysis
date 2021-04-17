@@ -61,4 +61,49 @@
         GROUP BY
             ep.prcid
     </select>
+
+    <select id="getYearData" resultType="Integer">
+        SELECT
+            any_value(year(da.createTime)) as yearTime
+        FROM
+            (
+                SELECT
+                    any_value ( ep.create_time ) AS createTime
+                FROM
+                    exp_pay ep
+                GROUP BY
+                    YEAR ( ep.create_time ) UNION ALL
+                SELECT
+                    any_value ( er.create_time ) AS createTime
+                FROM
+                    exp_revenue er
+                GROUP BY
+                    YEAR ( er.create_time )
+            ) da
+        GROUP BY
+            YEAR ( da.createTime ) ORDER BY yearTime asc
+    </select>
+    <select id="getMonth" resultType="Integer">
+        SELECT
+            any_value ( MONTH ( da.createTime ) ) AS monthTime
+        FROM
+            (
+                SELECT
+                    any_value ( ep.create_time ) AS createTime
+                FROM
+                    exp_pay ep
+                GROUP BY
+                    MONTH ( ep.create_time ) UNION ALL
+                SELECT
+                    any_value ( er.create_time ) AS createTime
+                FROM
+                    exp_revenue er
+                GROUP BY
+                    MONTH ( er.create_time )
+            ) da
+        GROUP BY
+            MONTH ( da.createTime )
+        ORDER BY
+            monthTime ASC
+    </select>
 </mapper>

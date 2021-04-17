@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 public class PayRevenuePieAnalysisVo {
     private String type;
-    private float money;
+    private float money=0;
 
 }

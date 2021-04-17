@@ -39,4 +39,18 @@ public class PayAnalysisController {
         List<PayCategoryPicAnalysisVo> yearPicAnalysis = payAnalysisService.getPayCategoryAnalysis(yearPayTime);
         return CommonResult.success(yearPicAnalysis);
     }
+    @ApiOperation("获取年份")
+    @GetMapping(value = "/year")
+    public CommonResult<List<Integer>> getYearData() {
+        List<Integer> yearPicAnalysis = payAnalysisService.getYearData();
+        return CommonResult.success(yearPicAnalysis);
+    }
+    @ApiOperation("获取月份")
+    @GetMapping(value = "/month")
+    public CommonResult<List<Integer>> getMonthData() {
+        List<Integer> yearPicAnalysis = payAnalysisService.getYearData();
+        return CommonResult.success(yearPicAnalysis);
+    }
+
+
 }
