@@ -1,11 +1,11 @@
-package com.jykj.user.dto;
+package com.jykj.user.dto.vo;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class PayAnalysisDataParam {
+public class PayDetailAnalysisVo {
     private String date;
     private float pay;
     private float revenue;

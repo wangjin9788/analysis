@@ -1,7 +1,9 @@
 package com.jykj.user.controller;
 
 import com.jykj.user.common.api.CommonResult;
-import com.jykj.user.dto.PayAnalysisDataParam;
+import com.jykj.user.dto.vo.PayCategoryPicAnalysisVo;
+import com.jykj.user.dto.vo.PayDetailAnalysisVo;
+import com.jykj.user.dto.vo.PayRevenuePieAnalysisVo;
 import com.jykj.user.service.IPayAnalysisService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,10 +20,23 @@ public class PayAnalysisController {
     private IPayAnalysisService payAnalysisService;
 
 
-    @ApiOperation("支出营收统计营收")
+    @ApiOperation("支出营收统计-柱状图")
     @GetMapping(value = "/pay_revenue_analysis")
-    public CommonResult<List<PayAnalysisDataParam>> getPayAndRevenueAnalysis() {
-        List<PayAnalysisDataParam> payAndRevenueAnalysis = payAnalysisService.getPayAndRevenueAnalysis();
+    public CommonResult<List<PayDetailAnalysisVo>> getPayAndRevenueAnalysis() {
+        List<PayDetailAnalysisVo> payAndRevenueAnalysis = payAnalysisService.getPayAndRevenueAnalysis();
         return CommonResult.success(payAndRevenueAnalysis);
+    }
+
+    @ApiOperation("支出营百分比-饼状图")
+    @GetMapping(value = "/year_pic_analysis/{yearPic}")
+    public CommonResult<List<PayRevenuePieAnalysisVo>> getPayPicAnalysis(@PathVariable("yearPic") String yearPic) {
+        List<PayRevenuePieAnalysisVo> yearPicAnalysis = payAnalysisService.getPayPicAnalysis(yearPic);
+        return CommonResult.success(yearPicAnalysis);
+    }
+    @ApiOperation("支出品类百分比-饼状图")
+    @GetMapping(value = "/pay_category_analysis/{yearPayTime}")
+    public CommonResult<List<PayCategoryPicAnalysisVo>> getPayCategoryAnalysis(@PathVariable("yearPayTime") String yearPayTime) {
+        List<PayCategoryPicAnalysisVo> yearPicAnalysis = payAnalysisService.getPayCategoryAnalysis(yearPayTime);
+        return CommonResult.success(yearPicAnalysis);
     }
 }

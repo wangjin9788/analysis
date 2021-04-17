@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jykj.user.mapper.PayAnalysisMapper">
-    <select id="getPayAndRevenueAnalysis" resultType="com.jykj.user.dto.PayAnalysisDataParam">
+    <select id="getPayAndRevenueAnalysis" resultType="com.jykj.user.dto.vo.PayDetailAnalysisVo">
         select
             any_value (date_format( da.createTime,'%Y-%m-%d')  ) AS date,
             any_value ( sum(da.total) ) AS pay,
@@ -30,5 +30,35 @@
         GROUP BY
             YEAR ( da.createTime ),
             MONTH ( da.createTime )
+    </select>
+
+    <select id="getPayPicAnalysis" resultType="com.jykj.user.dto.vo.PayRevenuePieAnalysisVo">
+        SELECT
+            any_value ('支出') as  type,
+            any_value ( sum(ep.pay)) AS money
+
+        FROM
+            exp_pay ep
+        where YEAR(ep.create_time)=2021
+        UNION all
+        SELECT
+            any_value ( '营收') AS type,
+            any_value ( sum(er.money)  )as  money
+        FROM
+            exp_revenue er
+        where YEAR(er.create_time)=#{time}
+    </select>
+
+    <select id="getPayCategoryAnalysis" resultType="com.jykj.user.dto.vo.PayCategoryPicAnalysisVo">
+        SELECT
+            any_value ( ec.type_name ) AS typeName,
+            any_value ( sum( ep.pay ) ) AS money
+        FROM
+            exp_pay ep
+                RIGHT JOIN exp_pay_revenue_category ec ON ep.prcid = ec.prcid
+        WHERE
+            YEAR ( ep.create_time ) =#{time}
+        GROUP BY
+            ep.prcid
     </select>
 </mapper>
