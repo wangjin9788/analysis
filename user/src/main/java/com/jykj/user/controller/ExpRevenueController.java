@@ -1,13 +1,10 @@
 package com.jykj.user.controller;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jykj.user.common.api.CommonResult;
 import com.jykj.user.dto.RevenueDataParam;
 import com.jykj.user.entity.ExpPayRevenueCategory;
 import com.jykj.user.entity.ExpRevenue;
-import com.jykj.user.entity.UmsAdmin;
-import com.jykj.user.entity.UmsMenu;
 import com.jykj.user.service.IExpRevenueService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 王进
@@ -53,15 +50,17 @@ public class ExpRevenueController {
         List<RevenueDataParam> adminList = revenueService.list(keyword, pageSize, pageNum);
         return CommonResult.success(adminList);
     }
+
     @ApiOperation("根据用户名或姓名分页获取用户列表")
-   @RequestMapping(value = "/category", method = RequestMethod.GET)
-   public CommonResult<List<ExpPayRevenueCategory>>  getCategory(){
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public CommonResult<List<ExpPayRevenueCategory>> getCategory() {
         return CommonResult.success(revenueService.getCategory());
     }
+
     @ApiOperation("修改营收")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult update( @RequestBody ExpRevenue expRevenue) {
+    public CommonResult update(@RequestBody ExpRevenue expRevenue) {
         int count = revenueService.update(expRevenue);
         if (count > 0) {
             return CommonResult.success(count);
@@ -77,6 +76,7 @@ public class ExpRevenueController {
         ExpRevenue expRevenue = revenueService.getRevenue(id);
         return CommonResult.success(expRevenue);
     }
+
     @ApiOperation("删除指定营收信息")
     @PostMapping(value = "/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {

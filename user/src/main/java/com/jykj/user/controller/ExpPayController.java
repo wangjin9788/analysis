@@ -3,10 +3,8 @@ package com.jykj.user.controller;
 
 import com.jykj.user.common.api.CommonResult;
 import com.jykj.user.dto.PayDataParam;
-import com.jykj.user.dto.RevenueDataParam;
 import com.jykj.user.entity.ExpPay;
 import com.jykj.user.entity.ExpPayRevenueCategory;
-import com.jykj.user.entity.ExpRevenue;
 import com.jykj.user.service.IExpPayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 王进
@@ -27,8 +25,9 @@ import java.util.List;
 @Api(tags = "ExpPayController", description = "支付管理")
 @RequestMapping("/exp-pay")
 public class ExpPayController {
-@Autowired
+    @Autowired
     private IExpPayService payService;
+
     @ApiOperation("添加支出")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
@@ -45,20 +44,22 @@ public class ExpPayController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PayDataParam>> list(@RequestParam(value = "selectDay", required = false) String keyword,
-                                                     @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                     @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+                                                 @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                 @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<PayDataParam> adminList = payService.list(keyword, pageSize, pageNum);
         return CommonResult.success(adminList);
     }
+
     @ApiOperation("获取品类详情")
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public CommonResult<List<ExpPayRevenueCategory>>  getCategory(){
+    public CommonResult<List<ExpPayRevenueCategory>> getCategory() {
         return CommonResult.success(payService.getPayRevenueCategory());
     }
+
     @ApiOperation("修改支出")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult update( @RequestBody ExpPay expPay) {
+    public CommonResult update(@RequestBody ExpPay expPay) {
         int count = payService.update(expPay);
         if (count > 0) {
             return CommonResult.success(count);
@@ -74,6 +75,7 @@ public class ExpPayController {
         ExpPay detail = payService.getPayDetail(id);
         return CommonResult.success(detail);
     }
+
     @ApiOperation("删除指定支出信息")
     @PostMapping(value = "/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {
