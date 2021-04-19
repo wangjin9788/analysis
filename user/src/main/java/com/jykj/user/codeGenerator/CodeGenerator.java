@@ -1,8 +1,6 @@
 package com.jykj.user.codeGenerator;
 
-import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
@@ -22,7 +20,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         //String projectPath = System.getProperty("user.dir");
-        String projectPath="E:\\jykj";
+        String projectPath = "D:\\jykj\\jykj";
         gc.setOutputDir(projectPath + "/user/src/main/java");
         gc.setAuthor("王进");
         gc.setOpen(false);
@@ -113,7 +111,7 @@ public class CodeGenerator {
         // 公共父类
 
         // 写于父类中的公共字
-        strategy.setInclude("exp_pay_revenue_category");
+        strategy.setInclude("evaluate");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
