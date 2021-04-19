@@ -47,14 +47,14 @@ public class EvaluateController {
     }
 
     @ApiOperation("根据id获取评价信息")
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/info/{id}")
     public CommonResult<Evaluate> getEvaluateById(@PathVariable Long id) {
         Evaluate evaluate = service.getEvaluateById(id);
         return CommonResult.success(evaluate);
     }
 
-    @ApiOperation("添加评价")
-    @PatchMapping(value = "/update")
+    @ApiOperation("修改评价")
+    @PutMapping(value = "/update")
     public CommonResult updateEvaluate(@RequestBody Evaluate eval) {
 
         int count = service.updateEvaluate(eval);
