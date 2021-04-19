@@ -2,4 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jykj.user.mapper.FermentationMapper">
 
+    <select id="getFermentationList" resultType="com.jykj.user.dto.vo.FermentationDataVo">
+        SELECT
+        f.fid AS id,
+        f.number,
+        fp.material AS patternName,
+        f.img AS img,
+        e.`explain` AS evaluate,
+        create_time AS createTime
+        FROM
+        fermentation f
+        LEFT JOIN fer_pattern fp ON f.fp_id = fp.fp_id
+        LEFT JOIN evaluate e ON f.eid = e.eid
+        WHERE
+        1 = 1
+        <if test="year!=null and year!=''">
+            AND YEAR( f.create_time ) = #{year}
+        </if>
+        <if test="month!=null and month!=''">
+            AND MONTH ( f.create_time ) = #{month}
+        </if>
+    </select>
 </mapper>

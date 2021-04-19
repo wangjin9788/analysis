@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/fermentation-detail")
-@Api(tags = "EvaluateController", description = "发酵详情管理")
+@Api(tags = "FermentationDetailController", description = "发酵详情管理")
 public class FermentationDetailController {
 
 }
