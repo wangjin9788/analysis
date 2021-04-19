@@ -2,15 +2,16 @@ package com.jykj.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -25,11 +26,10 @@ public class Fermentation implements Serializable {
 
     /**
      * 发酵表id
-
      */
     @TableId(value = "fid", type = IdType.AUTO)
     private Long fid;
-
+    
     /**
      * 发酵堆编号
      */
