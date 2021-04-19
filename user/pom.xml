@@ -108,6 +108,12 @@
             <optional>true</optional>
             <scope>true</scope>
         </dependency>
+        <!--MinIO JAVA SDK-->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>3.0.10</version>
+        </dependency>
     </dependencies>
 
     <build>

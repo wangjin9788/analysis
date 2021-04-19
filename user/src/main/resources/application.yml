@@ -7,6 +7,10 @@ spring:
     username: root
     password: 1598741
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+    enabled: true #开启文件上传
+    max-file-size: 10MB #限制文件上传大小为10M
   # 初始化物理连接个数
   initial-size: 1
   # 最大连接池数量
@@ -83,6 +87,7 @@ secure:
       - /ums-admin/info
       - /ums-admin/logout
       - /ums-admin/upload
+      - /minio/upload
 
 # 自定义jwt key
 jwt:
@@ -98,3 +103,10 @@ redis:
     resourceList: 'ums:resourceList'
   expire:
     common: 86400 # 24小时
+
+# MinIO对象存储相关配置
+minio:
+  endpoint: http://121.4.141.54:9090 #MinIO服务所在地址
+  bucketName: jykj #存储桶名称
+  accessKey: minioadmin #访问的key
+  secretKey: minioadmin #访问的秘钥
