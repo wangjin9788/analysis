@@ -34,7 +34,7 @@ public class FermentationDetail implements Serializable {
      * 发酵主表id
      */
     private long fid;
-    
+
     /**
      * 检查是当前温度
      */
@@ -64,11 +64,6 @@ public class FermentationDetail implements Serializable {
      * 原料重量
      */
     private Float weight;
-
-    /**
-     * 发酵状态（0-正在发酵  1发酵结束）
-     */
-    private Integer status;
 
     /**
      * 创建时间

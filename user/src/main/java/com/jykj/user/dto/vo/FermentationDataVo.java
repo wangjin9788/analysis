@@ -16,4 +16,8 @@ public class FermentationDataVo {
     private String createTime;
     //评价
     private String evaluate;
+    /**
+     * 发酵状态（0-正在发酵  1发酵结束）
+     */
+    private Integer status;
 }

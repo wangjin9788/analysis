@@ -9,7 +9,8 @@
         fp.material AS patternName,
         f.img AS img,
         e.`explain` AS evaluate,
-        create_time AS createTime
+        f.create_time AS createTime,
+        f.status as status
         FROM
         fermentation f
         LEFT JOIN fer_pattern fp ON f.fp_id = fp.fp_id

@@ -29,7 +29,7 @@ public class Fermentation implements Serializable {
      */
     @TableId(value = "fid", type = IdType.AUTO)
     private Long fid;
-    
+
     /**
      * 发酵堆编号
      */
@@ -55,5 +55,8 @@ public class Fermentation implements Serializable {
      */
     private LocalDateTime createTime;
 
-
+    /**
+     * 发酵状态（0-正在发酵  1发酵结束）
+     */
+    private Integer status;
 }
