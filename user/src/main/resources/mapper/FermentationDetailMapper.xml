@@ -5,14 +5,13 @@
     <select id="getFermentationDetailList" resultType="com.jykj.user.dto.vo.FermentationDetailDataVo">
         SELECT
         fd.fd_id AS fdId,
-        fd.fid AS munber,
         fd.temperature,
         fd.heap_temperature AS heapTemperature,
         fd.humidity,
         fd.heap_humidity AS heapHumidity,
         fd.ph,
         fd.weight,
-        fd.create_time AS createTime
+        DATE_FORMAT(fd.create_time, "%Y-%m-%d") AS createTime
         FROM
         fermentation_detail fd
         WHERE

@@ -2,8 +2,6 @@ package com.jykj.user.dto.vo;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class FermentationDetailDataVo {
     //详情id
@@ -23,5 +21,5 @@ public class FermentationDetailDataVo {
     //原料重量
     private float weight;
     //创建时间
-    private Date createTime;
+    private String createTime;
 }

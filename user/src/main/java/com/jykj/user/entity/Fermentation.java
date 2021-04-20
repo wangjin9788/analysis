@@ -30,10 +30,6 @@ public class Fermentation implements Serializable {
     @TableId(value = "fid", type = IdType.AUTO)
     private Long fid;
 
-    /**
-     * 发酵堆编号
-     */
-    private Long number;
 
     /**
      * 发酵种类表id

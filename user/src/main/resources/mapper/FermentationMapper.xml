@@ -5,11 +5,10 @@
     <select id="getFermentationList" resultType="com.jykj.user.dto.vo.FermentationDataVo">
         SELECT
         f.fid AS id,
-        f.number,
         fp.material AS patternName,
         f.img AS img,
-        e.`explain` AS evaluate,
-        f.create_time AS createTime,
+        e.assess AS evaluate,
+        DATE_FORMAT(f.create_time, "%Y-%m-%d") AS createTime,
         f.status as status
         FROM
         fermentation f

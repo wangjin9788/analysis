@@ -2,14 +2,15 @@ package com.jykj.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -31,7 +32,7 @@ public class Evaluate implements Serializable {
     /**
      * 评价
      */
-    private String explain;
+    private String assess;
 
 
 }
