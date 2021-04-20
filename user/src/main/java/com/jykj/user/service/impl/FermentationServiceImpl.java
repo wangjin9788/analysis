@@ -37,4 +37,9 @@ public class FermentationServiceImpl extends ServiceImpl<FermentationMapper, Fer
         List<FermentationDataVo> list = baseMapper.getFermentationList(page, year, month);
         return list;
     }
+
+    @Override
+    public Fermentation getFermentationById(long id) {
+        return baseMapper.selectById(id);
+    }
 }

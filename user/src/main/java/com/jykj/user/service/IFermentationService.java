@@ -20,4 +20,6 @@ public interface IFermentationService extends IService<Fermentation> {
     int updateFermentation(Fermentation fermentation);
 
     List<FermentationDataVo> getFermentationList(String year, String month, Integer pageSize, Integer pageNum);
+
+    Fermentation getFermentationById(long id);
 }

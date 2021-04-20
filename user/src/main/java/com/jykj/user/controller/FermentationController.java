@@ -59,4 +59,11 @@ public class FermentationController {
         List<FermentationDataVo> vo = service.getFermentationList(year, month, pageSize, pageNum);
         return CommonResult.success(vo);
     }
+
+    @ApiOperation("根据id获取发酵信息")
+    @GetMapping("/info/{id}")
+    public CommonResult<Fermentation> getFermentationInfo(@RequestParam(value = "id") long id) {
+        Fermentation fermentationById = service.getFermentationById(id);
+        return CommonResult.success(fermentationById);
+    }
 }
