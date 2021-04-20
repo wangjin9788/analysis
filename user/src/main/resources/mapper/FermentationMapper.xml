@@ -4,7 +4,7 @@
 
     <select id="getFermentationList" resultType="com.jykj.user.dto.vo.FermentationDataVo">
         SELECT
-        f.fid AS id,
+        f.fid AS fid,
         fp.material AS patternName,
         f.img AS img,
         e.assess AS evaluate,

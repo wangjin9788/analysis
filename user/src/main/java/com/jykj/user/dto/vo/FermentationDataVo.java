@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class FermentationDataVo {
     //发酵表id
-    private long id;
+    private long fid;
     //模式名称
     private String patternName;
     //图片

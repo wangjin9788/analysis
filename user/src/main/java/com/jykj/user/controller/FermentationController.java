@@ -62,7 +62,7 @@ public class FermentationController {
 
     @ApiOperation("根据id获取发酵信息")
     @GetMapping("/info/{id}")
-    public CommonResult<Fermentation> getFermentationInfo(@RequestParam(value = "id") long id) {
+    public CommonResult<Fermentation> getFermentationInfo(@PathVariable long id) {
         Fermentation fermentationById = service.getFermentationById(id);
         return CommonResult.success(fermentationById);
     }
