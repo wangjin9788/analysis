@@ -39,4 +39,9 @@ public class FerPatternServiceImpl extends ServiceImpl<FerPatternMapper, FerPatt
     public FerPattern getFerPatternById(Long id) {
         return baseMapper.selectById(id);
     }
+
+    @Override
+    public Integer deleteFerPatternById(Long id) {
+        return baseMapper.deleteById(id);
+    }
 }

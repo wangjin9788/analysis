@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jykj.user.mapper.FermentationDetailMapper">
 
+    <select id="getFermentationDetailList" resultType="com.jykj.user.dto.vo.FermentationDetailDataVo">
+        SELECT
+        fd.fd_id AS fdId,
+        fd.fid AS munber,
+        fd.temperature,
+        fd.heap_temperature AS heapTemperature,
+        fd.humidity,
+        fd.heap_humidity AS heapHumidity,
+        fd.ph,
+        fd.weight,
+        fd.create_time AS createTime
+        FROM
+        fermentation_detail fd
+        WHERE
+        1 = 1
+        <if test="fid!=null and fid!='' and fid>0"></if>
+        AND fd.fid = #{fid}
+    </select>
 </mapper>

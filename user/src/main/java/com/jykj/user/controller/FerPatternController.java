@@ -40,7 +40,7 @@ public class FerPatternController {
     }
 
     @ApiOperation("修改发酵模式")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateFerPattern(@RequestBody FerPattern pattern) {
 
         int count = patternService.updateFerPattern(pattern);
@@ -64,6 +64,17 @@ public class FerPatternController {
     public CommonResult<FerPattern> getFerPatternById(@PathVariable Long id) {
         FerPattern patternInfo = patternService.getFerPatternById(id);
         return CommonResult.success(patternInfo);
+    }
+
+    @ApiOperation("根据id获取发酵模式")
+    @PostMapping(value = "/delete/{id}")
+    public CommonResult deleteFerPatternById(@PathVariable Long id) {
+        Integer count = patternService.deleteFerPatternById(id);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
     }
 
 }

@@ -21,4 +21,6 @@ public interface IFerPatternService extends IService<FerPattern> {
     List<FerPattern> getFerPatternList();
 
     FerPattern getFerPatternById(Long id);
+
+    Integer deleteFerPatternById(Long id);
 }
