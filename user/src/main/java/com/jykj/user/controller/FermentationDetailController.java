@@ -51,8 +51,8 @@ public class FermentationDetailController {
     }
 
     @ApiOperation("根据主表id获取发酵详情信息")
-    @GetMapping("/list")
-    public CommonResult<List<FermentationDetailDataVo>> getFermentationDetailList(@RequestParam(value = "fid", required = false) Long fid,
+    @GetMapping("/list/{id}")
+    public CommonResult<List<FermentationDetailDataVo>> getFermentationDetailList(@PathVariable(value = "id", required = false) Long fid,
                                                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<FermentationDetailDataVo> vo = service.getFermentationDetailList(fid, pageSize, pageNum);
