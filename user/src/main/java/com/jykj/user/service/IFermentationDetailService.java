@@ -20,4 +20,8 @@ public interface IFermentationDetailService extends IService<FermentationDetail>
     int updateFermentationDetail(FermentationDetail detail);
 
     List<FermentationDetailDataVo> getFermentationDetailList(long fid, int pageSize, int pageNum);
+
+    FermentationDetail getFermentationDetailInfo(long fid);
+
+    int deleteFermentationDetail(long fid);
 }

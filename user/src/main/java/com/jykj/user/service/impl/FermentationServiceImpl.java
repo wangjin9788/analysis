@@ -42,4 +42,9 @@ public class FermentationServiceImpl extends ServiceImpl<FermentationMapper, Fer
     public Fermentation getFermentationById(long id) {
         return baseMapper.selectById(id);
     }
+
+    @Override
+    public int deleteFermentation(long fid) {
+        return baseMapper.deleteById(fid);
+    }
 }

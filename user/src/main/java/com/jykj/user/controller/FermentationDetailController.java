@@ -58,4 +58,22 @@ public class FermentationDetailController {
         List<FermentationDetailDataVo> vo = service.getFermentationDetailList(fid, pageSize, pageNum);
         return CommonResult.success(vo);
     }
+
+    @ApiOperation("根据详情id获取发酵详情信息")
+    @GetMapping("/info/{id}")
+    public CommonResult<FermentationDetail> getFermentationDetailInfo(@PathVariable(value = "id", required = false) Long fid) {
+        FermentationDetail vo = service.getFermentationDetailInfo(fid);
+        return CommonResult.success(vo);
+    }
+
+    @ApiOperation("删除发酵详情信息")
+    @PostMapping("/delete/{id}")
+    public CommonResult deleteFermentationDetail(@PathVariable Long id) {
+        Integer count = service.deleteFermentationDetail(id);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 }

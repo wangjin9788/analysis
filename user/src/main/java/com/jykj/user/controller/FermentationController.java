@@ -66,4 +66,15 @@ public class FermentationController {
         Fermentation fermentationById = service.getFermentationById(id);
         return CommonResult.success(fermentationById);
     }
+
+    @ApiOperation("删除发酵信息")
+    @PostMapping("/delete/{id}")
+    public CommonResult deleteFermentationDetail(@PathVariable Long id) {
+        Integer count = service.deleteFermentation(id);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 }

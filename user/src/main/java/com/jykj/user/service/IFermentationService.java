@@ -22,4 +22,6 @@ public interface IFermentationService extends IService<Fermentation> {
     List<FermentationDataVo> getFermentationList(String year, String month, Integer pageSize, Integer pageNum);
 
     Fermentation getFermentationById(long id);
+
+    int deleteFermentation(long id);
 }

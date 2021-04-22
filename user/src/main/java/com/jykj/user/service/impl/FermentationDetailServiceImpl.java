@@ -36,4 +36,14 @@ public class FermentationDetailServiceImpl extends ServiceImpl<FermentationDetai
         Page<FermentationDetailDataVo> page = new Page<>(pageNum, pageSize);
         return baseMapper.getFermentationDetailList(page, fid);
     }
+
+    @Override
+    public FermentationDetail getFermentationDetailInfo(long fid) {
+        return baseMapper.selectById(fid);
+    }
+
+    @Override
+    public int deleteFermentationDetail(long fid) {
+        return baseMapper.deleteById(fid);
+    }
 }
