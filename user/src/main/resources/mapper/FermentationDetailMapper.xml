@@ -5,6 +5,7 @@
     <select id="getFermentationDetailList" resultType="com.jykj.user.dto.vo.FermentationDetailDataVo">
         SELECT
         fd.fd_id AS fdId,
+        fd.fid,
         fd.temperature,
         fd.heap_temperature AS heapTemperature,
         fd.humidity,
