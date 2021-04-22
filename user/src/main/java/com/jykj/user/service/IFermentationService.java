@@ -3,6 +3,7 @@ package com.jykj.user.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jykj.user.dto.vo.FermentationDataVo;
 import com.jykj.user.entity.Fermentation;
+import com.jykj.user.entity.FermentationDetail;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface IFermentationService extends IService<Fermentation> {
     Fermentation getFermentationById(long id);
 
     int deleteFermentation(long id);
+
+    int updateFermentationAndSummary(long id);
 }

@@ -4,6 +4,7 @@ package com.jykj.user.controller;
 import com.jykj.user.common.api.CommonResult;
 import com.jykj.user.dto.vo.FermentationDataVo;
 import com.jykj.user.entity.Fermentation;
+import com.jykj.user.entity.FermentationDetail;
 import com.jykj.user.service.IFermentationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -71,6 +72,17 @@ public class FermentationController {
     @PostMapping("/delete/{id}")
     public CommonResult deleteFermentationDetail(@PathVariable Long id) {
         Integer count = service.deleteFermentation(id);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("修改状态和总结")
+    @PostMapping("/update-summary/{id}")
+    public CommonResult updateFermentationDetailAndSummary(@PathVariable long id) {
+        Integer count = service.updateFermentationAndSummary(id);
         if (count > 0) {
             return CommonResult.success(count);
         } else {
