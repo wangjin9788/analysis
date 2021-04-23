@@ -20,7 +20,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         //String projectPath = System.getProperty("user.dir");
-        String projectPath = "D:\\jykj\\jykj";
+        String projectPath = "E:\\xm\\analysis";
         gc.setOutputDir(projectPath + "/user/src/main/java");
         gc.setAuthor("王进");
         gc.setOpen(false);
@@ -111,7 +111,7 @@ public class CodeGenerator {
         // 公共父类
 
         // 写于父类中的公共字
-        strategy.setInclude("fer_pattern");
+        strategy.setInclude("breed_treatment");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);

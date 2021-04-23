@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jykj.user.mapper.BreedMapper">
+
+    <select id="getBreedInfoList" resultType="com.jykj.user.dto.vo.BreedListVo">
+        SELECT b.bid,
+               b.input_time                 AS inputTime,
+               b.input_weight               AS inputWeight,
+               b.produce_time               AS proTime,
+               b.produce_weight             AS proWeight,
+               concat(bp.soil, bp.evaluate) AS pattern,
+               b.feed_ids                   AS feedIds,
+               b.status
+        FROM breed b
+                 LEFT JOIN breed_pattern bp ON b.pid = bp.pid
+      where  1 = 1
+        <if test="status!=null and status!=''">
+            AND YEAR( b.status ) = #{status}
+        </if>
+    </select>
+</mapper>
