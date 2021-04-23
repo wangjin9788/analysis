@@ -26,7 +26,7 @@ public class BreedPatternController {
     @Autowired
     private IBreedPatternService service;
 
-    @ApiOperation("添加评价")
+    @ApiOperation("添加模式")
     @PostMapping(value = "/create")
     public CommonResult createBreedPattern(@RequestBody BreedPattern breed) {
 
@@ -38,7 +38,7 @@ public class BreedPatternController {
         }
     }
 
-    @ApiOperation("修改评价")
+    @ApiOperation("修改模式")
     @PutMapping(value = "/update")
     public CommonResult updateBreedPattern(@RequestBody BreedPattern breed) {
 
@@ -50,7 +50,7 @@ public class BreedPatternController {
         }
     }
 
-    @ApiOperation("根据养殖id获取评价")
+    @ApiOperation("根据养殖id获取模式")
     @GetMapping(value = "/list")
     public CommonResult<List<BreedPattern>> getBreedPatternList(
                                                                     @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
@@ -59,14 +59,14 @@ public class BreedPatternController {
         return CommonResult.success(PatternList);
     }
 
-    @ApiOperation("根据id获取评价信息")
+    @ApiOperation("根据id获取模式信息")
     @GetMapping(value = "/info/{id}")
     public CommonResult<BreedPattern> getBreedPatternById(@PathVariable Long id) {
         BreedPattern info = service.getBreedPatternById(id);
         return CommonResult.success(info);
     }
 
-    @ApiOperation("删除评价信息")
+    @ApiOperation("删除模式信息")
     @PostMapping("/delete/{id}")
     public CommonResult deleteBreedPattern(@PathVariable Long id) {
         Integer count = service.deletePattern(id);

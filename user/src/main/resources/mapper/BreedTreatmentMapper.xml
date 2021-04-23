@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jykj.user.mapper.BreedTreatmentMapper">
 
+    <select id="getBreedTreatmentList" resultType="com.jykj.user.dto.vo.BreedTreatmentVo">
+        SELECT
+            pt.bt_id AS btId,
+            pt.bd_id AS bdId,
+            e.assess,
+            IF
+                ( pt.type = 0, '伴食', '喷洒' ) AS type,
+            pt.illness_explain AS illnessName,
+            pt.medicine,
+            pt.illness_explain AS illnessExplain,
+            pt.img_url AS img,
+            pt.create_time AS createTime
+        FROM
+            breed_treatment pt
+                LEFT JOIN evaluate e ON pt.eid = e.eid
+        WHERE pt.bd_id=#{bdId}
+
+    </select>
 </mapper>
