@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 王进
@@ -53,9 +53,9 @@ public class BreedPatternController {
     @ApiOperation("根据养殖id获取模式")
     @GetMapping(value = "/list")
     public CommonResult<List<BreedPattern>> getBreedPatternList(
-                                                                    @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<BreedPattern> PatternList = service.getBreedPatternList( pageSize, pageNum);
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        List<BreedPattern> PatternList = service.getBreedPatternList(pageSize, pageNum);
         return CommonResult.success(PatternList);
     }
 
