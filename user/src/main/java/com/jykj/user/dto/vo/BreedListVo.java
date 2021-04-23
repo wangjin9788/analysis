@@ -2,6 +2,8 @@ package com.jykj.user.dto.vo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class BreedListVo {
     private long bid;
@@ -15,10 +17,9 @@ public class BreedListVo {
     private float proWeight;
     //养殖模式
     private String pattern;
-    //材料（发酵）id
+    //饲料（发酵）id
     private String feedIds;
     //状态
     private int status;
-
 
 }

@@ -40,7 +40,7 @@ public class BreedMeasureController {
         }
     }
     @ApiOperation("修改计量")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateBreedMeasure(@RequestBody BreedMeasure breed) {
 
         int count = service.updateBreedMeasure(breed);

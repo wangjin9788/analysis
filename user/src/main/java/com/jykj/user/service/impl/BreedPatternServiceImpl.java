@@ -9,6 +9,7 @@ import com.jykj.user.service.IBreedPatternService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class BreedPatternServiceImpl extends ServiceImpl<BreedPatternMapper, Bre
 
     @Override
     public int createBreedPattern(BreedPattern breed) {
+        breed.setCreateTime(LocalDateTime.now());
         return baseMapper.insert(breed);
     }
 
@@ -34,7 +36,7 @@ public class BreedPatternServiceImpl extends ServiceImpl<BreedPatternMapper, Bre
 
     @Override
     public List<BreedPattern> getBreedPatternList(Integer pageSize, Integer pageNum) {
-        Page<BreedPattern> page = new Page<>(pageNum,pageNum);
+        Page<BreedPattern> page = new Page<>(pageNum,pageSize);
         return baseMapper.selectPage(page, new QueryWrapper<>()).getRecords();
     }
 

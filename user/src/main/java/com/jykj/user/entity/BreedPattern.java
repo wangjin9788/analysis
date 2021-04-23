@@ -36,19 +36,12 @@ public class BreedPattern implements Serializable {
     private String evaluate;
 
     /**
-     * 增氧
-     */
-    private Integer aeration;
-
-    /**
      * 土样
      */
     private String soil;
-
     /**
      * 创建时间
      */
     private LocalDateTime createTime;
-
 
 }

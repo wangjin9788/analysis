@@ -39,7 +39,7 @@ public class BreedPatternController {
     }
 
     @ApiOperation("修改模式")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateBreedPattern(@RequestBody BreedPattern breed) {
 
         int count = service.updateBreedPattern(breed);

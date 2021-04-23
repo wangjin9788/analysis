@@ -40,7 +40,7 @@ public class BreedEvaluateController {
         }
     }
     @ApiOperation("修改评价")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateBreedEvaluate(@RequestBody BreedEvaluate breed) {
 
         int count = service.updateBreedEvaluate(breed);

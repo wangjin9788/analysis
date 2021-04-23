@@ -42,7 +42,7 @@ public class BreedDetailController {
         }
     }
     @ApiOperation("修改养殖信息")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateBreedDetail(@RequestBody BreedDetail breed) {
 
         int count = service.updateBreedDetail(breed);
