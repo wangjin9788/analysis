@@ -9,7 +9,7 @@ public class BreedTreatmentVo {
     //id
     private long ptId;
     //详情表编号
-    private long bdId;
+    private long bid;
     //评价
     private String assess;
     //治疗类型

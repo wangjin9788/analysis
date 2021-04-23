@@ -5,7 +5,7 @@
     <select id="getBreedTreatmentList" resultType="com.jykj.user.dto.vo.BreedTreatmentVo">
         SELECT
             pt.bt_id AS btId,
-            pt.bd_id AS bdId,
+            pt.bid AS bid,
             e.assess,
             IF
                 ( pt.type = 0, '伴食', '喷洒' ) AS type,

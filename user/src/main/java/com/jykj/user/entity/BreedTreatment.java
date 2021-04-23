@@ -30,9 +30,9 @@ public class BreedTreatment implements Serializable {
     private Long btId;
 
     /**
-     * 关联详情表
+     * 关联养殖主表
      */
-    private Long bdId;
+    private Long bid;
 
     /**
      * 治疗类型（0:伴食，1：喷洒）
