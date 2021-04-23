@@ -47,12 +47,12 @@ public class Breed implements Serializable {
     /**
      * 投入时间
      */
-    private LocalDateTime inputTime;
+    private String inputTime;
 
     /**
      * 产出时间
      */
-    private LocalDateTime produceTime;
+    private String produceTime;
 
     /**
      * 状态（0-未产出  1-产出）
