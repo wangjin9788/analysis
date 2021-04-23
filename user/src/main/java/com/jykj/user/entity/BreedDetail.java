@@ -62,7 +62,7 @@ public class BreedDetail implements Serializable {
     /**
      * 异常说明
      */
-    private String explain;
+    private String description;
 
     /**
      * 异常图片
