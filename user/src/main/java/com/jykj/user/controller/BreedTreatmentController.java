@@ -41,7 +41,7 @@ public class BreedTreatmentController {
     }
 
     @ApiOperation("修改治疗信息")
-    @PutMapping(value = "/update")
+    @PostMapping(value = "/update")
     public CommonResult updateBreedTreatment(@RequestBody BreedTreatment breed) {
 
         int count = service.updateBreedTreatment(breed);
@@ -55,10 +55,10 @@ public class BreedTreatmentController {
     @ApiOperation("根据养殖id获取治疗信息")
     @GetMapping(value = "/list/{id}")
     public CommonResult<List<BreedTreatmentVo>> getBreedTreatmentList(
-            @PathVariable(value = "id") long bdId,
+            @PathVariable(value = "id") long bid,
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<BreedTreatmentVo> TreatmentList = service.getBreedTreatmentList( bdId,pageSize, pageNum);
+        List<BreedTreatmentVo> TreatmentList = service.getBreedTreatmentList( bid,pageSize, pageNum);
         return CommonResult.success(TreatmentList);
     }
 

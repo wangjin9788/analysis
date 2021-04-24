@@ -17,7 +17,7 @@
         FROM
             breed_treatment pt
                 LEFT JOIN evaluate e ON pt.eid = e.eid
-        WHERE pt.bd_id=#{bdId}
+        WHERE pt.bid=#{bid}
 
     </select>
 </mapper>

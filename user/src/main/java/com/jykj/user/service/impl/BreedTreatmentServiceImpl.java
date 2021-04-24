@@ -34,9 +34,9 @@ public class BreedTreatmentServiceImpl extends ServiceImpl<BreedTreatmentMapper,
     }
 
     @Override
-    public List<BreedTreatmentVo> getBreedTreatmentList(Long bdId, Integer pageSize, Integer pageNum) {
+    public List<BreedTreatmentVo> getBreedTreatmentList(Long bid, Integer pageSize, Integer pageNum) {
         Page<BreedTreatmentVo> page = new Page<>(pageNum,pageSize);
-        return baseMapper.getBreedTreatmentList(page,bdId);
+        return baseMapper.getBreedTreatmentList(page,bid);
     }
 
     @Override

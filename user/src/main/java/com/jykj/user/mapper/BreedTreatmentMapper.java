@@ -17,5 +17,5 @@ import java.util.List;
  */
 public interface BreedTreatmentMapper extends BaseMapper<BreedTreatment> {
 
-    List<BreedTreatmentVo> getBreedTreatmentList(Page<BreedTreatmentVo> page, long bdId);
+    List<BreedTreatmentVo> getBreedTreatmentList(Page<BreedTreatmentVo> page, long bid);
 }

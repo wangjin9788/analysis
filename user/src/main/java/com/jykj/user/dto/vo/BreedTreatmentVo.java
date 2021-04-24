@@ -7,11 +7,9 @@ import java.util.Date;
 @Data
 public class BreedTreatmentVo {
     //id
-    private long ptId;
-    //详情表编号
+    private long btId;
+    //养殖表编号
     private long bid;
-    //评价
-    private String assess;
     //治疗类型
     private String type;
     //病理名称
@@ -22,6 +20,8 @@ public class BreedTreatmentVo {
     private String illnessExplain;
     //图片
     private  String img;
+    //评价
+    private String assess;
     //创建时间
     private Date createTime;
 

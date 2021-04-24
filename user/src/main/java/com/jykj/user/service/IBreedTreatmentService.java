@@ -20,7 +20,7 @@ public interface IBreedTreatmentService extends IService<BreedTreatment> {
 
     int updateBreedTreatment(BreedTreatment breed);
 
-    List<BreedTreatmentVo> getBreedTreatmentList(Long bdId, Integer pageSize, Integer pageNum);
+    List<BreedTreatmentVo> getBreedTreatmentList(Long bid, Integer pageSize, Integer pageNum);
 
     BreedTreatment getBreedTreatmentById(long id);
 
