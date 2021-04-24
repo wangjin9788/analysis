@@ -8,6 +8,7 @@ import com.jykj.user.mapper.FermentationDetailMapper;
 import com.jykj.user.service.IFermentationDetailService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public class FermentationDetailServiceImpl extends ServiceImpl<FermentationDetai
 
     @Override
     public int createFermentationDetail(FermentationDetail detail) {
+        detail.setCreateTime(LocalDateTime.now());
         return baseMapper.insert(detail);
     }
 
