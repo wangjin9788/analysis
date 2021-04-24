@@ -37,12 +37,12 @@ public class BreedEvaluate implements Serializable {
     /**
      * 产出评价
      */
-    private Long produceEvaluate;
+    private String produceEvaluate;
 
     /**
      * 孵化评价
      */
-    private Long hatchEvaluate;
+    private String hatchEvaluate;
 
     /**
      * 养殖周期

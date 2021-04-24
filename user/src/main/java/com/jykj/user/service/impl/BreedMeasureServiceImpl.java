@@ -30,6 +30,7 @@ public class BreedMeasureServiceImpl extends ServiceImpl<BreedMeasureMapper, Bre
 
     @Override
     public int updateBreedMeasure(BreedMeasure breed) {
+        breed.setCheckTime(LocalDateTime.now());
         return baseMapper.updateById(breed);
     }
 
