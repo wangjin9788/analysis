@@ -18,4 +18,6 @@ import java.util.List;
  */
 public interface BreedMapper extends BaseMapper<Breed> {
     List<BreedListVo> getBreedInfoList(Page<BreedListVo> page, @Param(value = "status") String status);
+
+    Integer getHowManyDaysApart(@Param(value = "bid") long bid);
 }

@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jykj.user.entity.BreedEvaluate;
 import com.jykj.user.mapper.BreedEvaluateMapper;
+import com.jykj.user.mapper.BreedMapper;
 import com.jykj.user.service.IBreedEvaluateService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,8 +24,12 @@ import java.util.List;
 @Service
 public class BreedEvaluateServiceImpl extends ServiceImpl<BreedEvaluateMapper, BreedEvaluate> implements IBreedEvaluateService {
 
+    @Autowired
+    private BreedMapper breedMapper;
     @Override
     public int createBreedEvaluate(BreedEvaluate breed) {
+        Integer cycle = breedMapper.getHowManyDaysApart(breed.getBid());
+        breed.setCycle(cycle);
         breed.setCreateTime(LocalDateTime.now());
         return baseMapper.insert(breed);
     }
