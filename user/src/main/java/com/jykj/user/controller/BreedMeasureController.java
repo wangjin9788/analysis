@@ -2,6 +2,7 @@ package com.jykj.user.controller;
 
 
 import com.jykj.user.common.api.CommonResult;
+import com.jykj.user.dto.vo.MeasureAnalysisVo;
 import com.jykj.user.entity.BreedMeasure;
 import com.jykj.user.service.IBreedMeasureService;
 import com.jykj.user.service.IBreedMeasureService;
@@ -75,5 +76,10 @@ public class BreedMeasureController {
         } else {
             return CommonResult.failed();
         }
+    }
+    @ApiOperation("生长信息统计")
+    @GetMapping("/growth-analysis/{id}")
+    public CommonResult<List<MeasureAnalysisVo>> getMeasureAnalysis(@PathVariable Long id){
+        return CommonResult.success(service.getMeasureAnalysis(id));
     }
 }

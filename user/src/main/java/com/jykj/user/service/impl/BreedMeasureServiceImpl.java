@@ -2,6 +2,7 @@ package com.jykj.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jykj.user.dto.vo.MeasureAnalysisVo;
 import com.jykj.user.entity.BreedEvaluate;
 import com.jykj.user.entity.BreedMeasure;
 import com.jykj.user.mapper.BreedMeasureMapper;
@@ -50,5 +51,10 @@ public class BreedMeasureServiceImpl extends ServiceImpl<BreedMeasureMapper, Bre
     @Override
     public Integer deleteMeasure(long id) {
         return baseMapper.deleteById(id);
+    }
+
+    @Override
+    public List<MeasureAnalysisVo> getMeasureAnalysis(Long id) {
+        return baseMapper.getMeasureAnalysis(id);
     }
 }

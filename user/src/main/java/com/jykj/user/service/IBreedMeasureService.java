@@ -1,7 +1,9 @@
 package com.jykj.user.service;
 
+import com.jykj.user.dto.vo.MeasureAnalysisVo;
 import com.jykj.user.entity.BreedMeasure;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -23,4 +25,6 @@ public interface IBreedMeasureService extends IService<BreedMeasure> {
     BreedMeasure getBreedMeasureById(long id);
 
     Integer deleteMeasure(long id);
+
+    List<MeasureAnalysisVo> getMeasureAnalysis(Long id);
 }

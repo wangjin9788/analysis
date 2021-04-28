@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jykj.user.mapper.BreedMeasureMapper">
-
+    <select id="getMeasureAnalysis" resultType="com.jykj.user.dto.vo.MeasureAnalysisVo">
+        SELECT
+            bm.count ,
+            DATE_FORMAT(bm.check_time ,"%Y-%m-%d") as date
+        FROM
+            breed_measure bm
+        WHERE
+            bm.bid =#{bid}
+    </select>
 </mapper>
