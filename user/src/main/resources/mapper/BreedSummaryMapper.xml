@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jykj.user.mapper.BreedSummaryMapper">
+    <select id="informationAggregation" resultType="com.jykj.user.entity.BreedSummary">
+        SELECT any_value(b.bid)                    AS number,
+               any_value(bp.evaluate)              AS evaluate,
+               any_value(bp.soil)                  AS soil,
+               any_value(b.input_weight)           AS inputWeight,
+               any_value(b.input_time)             AS inputTime,
+               any_value(b.produce_weight)         AS produceWeight,
+               any_value(b.feed_ids)               AS feedIds,
+               any_value(AVG(bd.temperature))      AS meanTemperature,
+               any_value(avg(bd.soil_temperature)) AS meanSoilTemperature,
+               any_value(avg(bd.humidity))         AS meanHumidity,
+               any_value(avg(bd.soil_humidity))    AS meanSoilHumidity,
+               any_value(avg(bd.humidity))         AS meanHumidity,
+               any_value(be.produce_evaluate)      AS produceEvaluate,
+               any_value(be.hatch_evaluate)        AS hatchEvaluate,
+               any_value(be.cycle)                 AS cycle,
+               any_value(be.price)                 as price,
+               any_value(bt.medicine)              as medicine,
+               any_value(bt.illness_name)          AS illnessName,
+               any_value(bt.illness_explain)       AS illnessExplain
+        FROM breed AS b
+                 LEFT JOIN breed_detail AS bd ON bd.bid = b.bid
+                 LEFT JOIN breed_evaluate AS be ON be.bid = b.bid
+                 LEFT JOIN breed_treatment AS bt ON bt.bid = b.bid
+                 LEFT JOIN breed_pattern AS bp ON bp.pid = b.pid
+        WHERE b.bid = #{bid};
+    </select>
+
+    <select id="getBreedSummaryInfo" resultType="com.jykj.user.dto.vo.BreedSummaryInfoVo">
+        select bs.number                AS number,
+               bs.evaluate              AS evaluate,
+               bs.soil                  AS soil,
+               bs.input_weight          AS inputWeight,
+               bs.input_time            AS inputTime,
+               bs.produce_weight        AS produceWeight,
+               bs.feed_ids              AS feedIds,
+               bs.mean_temperature      AS meanTemperature,
+               bs.mean_soil_temperature AS meanSoilTemperature,
+               bs.mean_humidity         AS meanHumidity,
+               bs.mean_soil_humidity    AS meanSoilHumidity,
+               bs.mean_humidity         AS meanHumidity,
+               bs.produce_evaluate      AS produceEvaluate,
+               bs.hatch_evaluate        AS hatchEvaluate,
+               bs.cycle                 AS cycle,
+               bs.price                 AS price,
+               bs.medicine              AS medicine,
+               bs.illness_name          AS illnessName,
+               bs.illness_explain       AS illnessExplain
+        FROM breed_summary bs
+        WHERE bs.number = #{bid}
+
+    </select>
+</mapper>
