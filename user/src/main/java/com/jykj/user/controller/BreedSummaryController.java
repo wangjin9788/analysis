@@ -30,8 +30,8 @@ public class BreedSummaryController {
     private IBreedSummaryService service;
 
     @ApiOperation("根据bid获取总结信息")
-    @GetMapping("/summary/{bid}")
-    public CommonResult<BreedSummaryInfoVo> getBreedSummaryInfo(@PathVariable(value = "bid") long bid) {
+    @GetMapping("/info/{id}")
+    public CommonResult<BreedSummaryInfoVo> getBreedSummaryInfo(@PathVariable(value = "id") long bid) {
         BreedSummaryInfoVo info = service.getBreedSummaryInfo(bid);
         if (info == null) {
             return CommonResult.failed();
