@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://121.4.141.54:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 1598741
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -106,7 +106,7 @@ redis:
 
 # MinIO对象存储相关配置
 minio:
-  endpoint: http://121.4.141.54:9090 #MinIO服务所在地址
+  endpoint: http://localhost:9000 #MinIO服务所在地址
   bucketName: jykj #存储桶名称
   accessKey: minioadmin #访问的key
   secretKey: minioadmin #访问的秘钥

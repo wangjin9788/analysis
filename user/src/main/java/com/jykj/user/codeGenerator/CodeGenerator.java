@@ -20,7 +20,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         //String projectPath = System.getProperty("user.dir");
-        String projectPath = "E:\\xm\\analysis";
+        String projectPath = "F:\\xm\\analysis";
         gc.setOutputDir(projectPath + "/user/src/main/java");
         gc.setAuthor("王进");
         gc.setOpen(false);
@@ -29,7 +29,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://121.4.141.54:3306/mall?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
@@ -111,7 +111,7 @@ public class CodeGenerator {
         // 公共父类
 
         // 写于父类中的公共字
-        strategy.setInclude("breed_summary");
+        strategy.setInclude("breed_pathology");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
