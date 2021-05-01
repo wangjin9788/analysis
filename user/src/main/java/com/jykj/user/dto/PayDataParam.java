@@ -22,6 +22,10 @@ public class PayDataParam {
      * 支付金额
      */
     private Double pay;
+    /**
+     * 商品名稱
+     */
+    private String name;
 
     /**
      * 创建时间

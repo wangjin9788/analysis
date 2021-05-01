@@ -4,7 +4,7 @@
 
     <select id="getPayList" resultType="com.jykj.user.dto.PayDataParam">
         SELECT
-        er.epid,er.pay,er.create_id,DATE_FORMAT(er.create_time, "%Y-%m-%d") AS create_time,p.type_name
+        er.epid,er.pay,er.name,er.create_id,er.create_time AS create_time,p.type_name
         FROM
         exp_pay er
         LEFT JOIN exp_pay_revenue_category p ON p.prcid = er.prcid
@@ -14,5 +14,6 @@
             and DATE_FORMAT(er.create_time,"%Y-%m-%d") =#{time}
 
         </if>
+        order  by er.create_time desc
     </select>
 </mapper>

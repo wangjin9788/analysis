@@ -2,15 +2,17 @@ package com.jykj.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -33,7 +35,10 @@ public class ExpPay implements Serializable {
      * 支付的品类ID
      */
     private Long prcid;
-
+    /**
+     *商品名稱
+     */
+    private String name;
     /**
      * 支付金额
      */
