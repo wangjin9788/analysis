@@ -217,7 +217,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         int count = roleIds == null ? 0 : roleIds.size();
         //先删除原来的关系
         QueryWrapper<UmsAdminRoleRelation> wrapper =new QueryWrapper<>();
-        wrapper.eq("adminId",adminId);
+        wrapper.eq("admin_id",adminId);
         relationMapper.delete(wrapper);
         //建立新关系
         if (!CollectionUtils.isEmpty(roleIds)) {
