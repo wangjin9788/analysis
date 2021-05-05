@@ -59,6 +59,24 @@ spring:
       resourceList: 'ums:resourceList'
     expire:
       common: 86400 # 24小时
+  mail:
+
+    host: smtp.qq.com #这里换成自己的邮箱类型 例如qq邮箱就写smtp.qq.com
+    username: 412741226@qq.com #QQ邮箱
+    password: gtjysdjqnydxbhgb #邮箱密码或者授权码
+    protocol: smtp #发送邮件协议
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465 #端口号465或587
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true #开启SSL
+    default-encoding: utf-8
+    freemarker:
+      cache: false # 缓存配置 开发阶段应该配置为false 因为经常会改
+      suffix: .html # 模版后缀名 默认为ftl
+      charset: UTF-8 # 文件编码
+      template-loader-path: classpath:/templates/
+
 
 mybatis:
   mapper-locations:

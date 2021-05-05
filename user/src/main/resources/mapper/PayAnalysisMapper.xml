@@ -3,7 +3,7 @@
 <mapper namespace="com.jykj.user.mapper.PayAnalysisMapper">
     <select id="getPayAndRevenueAnalysis" resultType="com.jykj.user.dto.vo.PayDetailAnalysisVo">
         select
-            any_value (date_format( da.createTime,'%Y-%m-%d')  ) AS date,
+            any_value (date_format( da.createTime,'%Y-%m')  ) AS date,
             any_value ( sum(da.total) ) AS pay,
             any_value ( sum(da.revenue) ) AS revenue
         FROM
