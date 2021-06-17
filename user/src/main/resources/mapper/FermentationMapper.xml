@@ -9,6 +9,7 @@
         f.img AS img,
         e.assess AS evaluate,
         DATE_FORMAT(f.create_time, "%Y-%m-%d") AS createTime,
+        DATE_FORMAT(f.fer_time, "%Y-%m-%d") as ferTime,
         f.status as status
         FROM
         fermentation f

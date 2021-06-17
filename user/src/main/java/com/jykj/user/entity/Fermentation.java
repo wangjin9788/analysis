@@ -55,4 +55,9 @@ public class Fermentation implements Serializable {
      * 发酵状态（0-正在发酵  1发酵结束）
      */
     private Integer status;
+    /**
+     * 发酵开始时间
+     */
+    private String ferTime;
+
 }

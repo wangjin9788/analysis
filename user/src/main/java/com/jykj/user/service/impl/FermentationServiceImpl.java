@@ -53,13 +53,16 @@ public class FermentationServiceImpl extends ServiceImpl<FermentationMapper, Fer
 
     @Override
     public int updateFermentationAndSummary(long id) {
-        if(id==1){
+
+        Fermentation fermentation = baseMapper.selectById(id);
+        if(fermentation!=null && fermentation.getStatus()==1){
             return 1;
         }
-        Fermentation fermentation = baseMapper.selectById(id);
         fermentation.setStatus(1);
+
         //修改状态为完成
-        return baseMapper.updateById(fermentation);
+        int count = baseMapper.updateById(fermentation);
+        return count;
         //建一张总结表，将数据进行整理
     }
 }

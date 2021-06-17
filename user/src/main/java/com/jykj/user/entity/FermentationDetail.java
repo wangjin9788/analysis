@@ -70,5 +70,4 @@ public class FermentationDetail implements Serializable {
      */
     private LocalDateTime createTime;
 
-
 }

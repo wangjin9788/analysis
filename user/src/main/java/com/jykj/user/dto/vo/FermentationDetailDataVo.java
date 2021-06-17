@@ -22,4 +22,5 @@ public class FermentationDetailDataVo {
     private float weight;
     //创建时间
     private String createTime;
+
 }

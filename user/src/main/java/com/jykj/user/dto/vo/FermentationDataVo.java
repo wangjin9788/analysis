@@ -18,4 +18,6 @@ public class FermentationDataVo {
      * 发酵状态（0-正在发酵  1发酵结束）
      */
     private Integer status;
+    //创建时间
+    private String ferTime;
 }
