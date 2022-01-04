@@ -2,13 +2,18 @@ package com.jykj.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jykj.user.dto.BatchDetailParam;
+import com.jykj.user.dto.BatchFerDetailParam;
+import com.jykj.user.dto.CompostingTaskParam;
 import com.jykj.user.dto.vo.FermentationDetailDataVo;
 import com.jykj.user.entity.FermentationDetail;
 import com.jykj.user.mapper.FermentationDetailMapper;
 import com.jykj.user.service.IFermentationDetailService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,4 +53,20 @@ public class FermentationDetailServiceImpl extends ServiceImpl<FermentationDetai
     public int deleteFermentationDetail(long fid) {
         return baseMapper.deleteById(fid);
     }
+    @Override
+    public int batchFerDetail(List<BatchFerDetailParam> batchList) {
+        List<BatchFerDetailParam> list = new ArrayList<>();
+        for (BatchFerDetailParam param :
+                batchList) {
+            if (!StringUtils.isEmpty(param.getHeapHumidity()) && !StringUtils.isEmpty(param.getHeapTemperature())) {
+                list.add(param);
+            }
+        }
+        int count = 0;
+        if (list.size() > 0 && list != null && !list.isEmpty()) {
+            count = baseMapper.batchFerDetail(batchList);
+        }
+        return count;
+    }
+
 }

@@ -3,14 +3,18 @@ package com.jykj.user.controller;
 
 import com.jykj.user.common.api.CommonResult;
 import com.jykj.user.dto.vo.FermentationDataVo;
+import com.jykj.user.dto.vo.TaskDictionaryVo;
 import com.jykj.user.entity.Fermentation;
-import com.jykj.user.entity.FermentationDetail;
+import com.jykj.user.entity.TaskDictionary;
 import com.jykj.user.service.IFermentationService;
+import com.jykj.user.service.ITaskDictionaryService;
+import com.jykj.user.service.ITaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -25,16 +29,21 @@ import java.util.List;
 @RequestMapping("/fermentation")
 @Api(tags = "FermentationController", description = "发酵管理")
 public class FermentationController {
-
+    @Autowired
+    private ITaskDictionaryService taskdService;
     @Autowired
     private IFermentationService service;
 
+    @Autowired
+    private ITaskService taskService;
+
+
     @ApiOperation("创建发酵信息")
     @PostMapping("/create")
-    public CommonResult createFermentation(@RequestBody Fermentation fermentation) {
+    public CommonResult createFermentation(@RequestBody Fermentation fermentation) throws ParseException {
         Integer count = service.createFermentation(fermentation);
         if (count > 0) {
-            return CommonResult.success(count);
+            return CommonResult.success(fermentation.getFid());
         } else {
             return CommonResult.failed();
         }

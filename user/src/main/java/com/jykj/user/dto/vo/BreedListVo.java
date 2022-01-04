@@ -21,5 +21,8 @@ public class BreedListVo {
     private String feedIds;
     //状态
     private int status;
-
+    //栏位编号
+    private int number;
+    //类型(0:室内  1：室外)
+    private int type;
 }

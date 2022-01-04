@@ -18,8 +18,6 @@ public class FermentationDetailDataVo {
     private int heapHumidity;
     //ph值
     private float ph;
-    //原料重量
-    private float weight;
     //创建时间
     private String createTime;
 

@@ -1,5 +1,8 @@
 package com.jykj.user.service;
 
+import com.jykj.user.dto.BatchDetailParam;
+import com.jykj.user.dto.vo.BreedChartVo;
+import com.jykj.user.dto.vo.BreedDetailVo;
 import com.jykj.user.dto.vo.BreedListVo;
 import com.jykj.user.entity.Breed;
 import com.jykj.user.entity.BreedDetail;
@@ -20,9 +23,13 @@ public interface IBreedDetailService extends IService<BreedDetail> {
 
     int updateBreedDetail(BreedDetail breed);
 
-    List<BreedDetail> getBreedDetailList(long bid, Integer pageSize, Integer pageNum);
+    List<BreedDetailVo> getBreedDetailList(long bid, Integer pageSize, Integer pageNum);
 
     BreedDetail getBreedDetailById(long id);
 
     Integer deleteBreedDetail(long id);
+
+    int batchBreedDetail(List<BatchDetailParam> batchList);
+
+    List<BreedChartVo>getBreedChartTemperature(long id);
 }

@@ -3,9 +3,10 @@ package com.jykj.user.controller;
 
 import com.jykj.user.common.api.CommonResult;
 import com.jykj.user.dto.vo.BreedListVo;
+import com.jykj.user.dto.vo.FerChartVo;
 import com.jykj.user.entity.Breed;
 import com.jykj.user.entity.Evaluate;
-import com.jykj.user.service.IBreedService;
+import com.jykj.user.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class BreedController {
 
     @Autowired
     private IBreedService service;
+
 
     @ApiOperation("添加养殖信息")
     @PostMapping(value = "/create")
@@ -53,10 +55,11 @@ public class BreedController {
     }
     @ApiOperation("获取养殖信息")
     @GetMapping(value = "/list")
-    public CommonResult<List<BreedListVo>> getBreedList(@RequestParam(value = "status", required = false) String status,
+    public CommonResult<List<BreedListVo>> getBreedList(@RequestParam(value = "status", defaultValue = "0") Integer status,
                                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<BreedListVo> evaluateList = service.getBreedList(status,pageSize,pageNum);
+                                                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                                                        @RequestParam(value = "type", defaultValue = "0") Integer type) {
+        List<BreedListVo> evaluateList = service.getBreedList(status,pageSize,pageNum,type);
         return CommonResult.success(evaluateList);
     }
 
@@ -82,9 +85,11 @@ public class BreedController {
     public CommonResult deleteBreed(@PathVariable Long id) {
         Integer count = service.deleteBreed(id);
         if (count > 0) {
+
             return CommonResult.success(count);
         } else {
             return CommonResult.failed();
         }
     }
+
 }

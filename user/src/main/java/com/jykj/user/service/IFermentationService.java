@@ -1,10 +1,12 @@
 package com.jykj.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jykj.user.dto.CompostingTaskParam;
 import com.jykj.user.dto.vo.FermentationDataVo;
 import com.jykj.user.entity.Fermentation;
 import com.jykj.user.entity.FermentationDetail;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -16,7 +18,7 @@ import java.util.List;
  * @since 2021-04-19
  */
 public interface IFermentationService extends IService<Fermentation> {
-    int createFermentation(Fermentation fermentation);
+    int createFermentation(Fermentation fermentation) throws ParseException;
 
     int updateFermentation(Fermentation fermentation);
 
@@ -27,4 +29,7 @@ public interface IFermentationService extends IService<Fermentation> {
     int deleteFermentation(long id);
 
     int updateFermentationAndSummary(long id);
+
+    CompostingTaskParam getCompostingTemperature(long id);
+    List<Long> getFerAllId();
 }

@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -33,21 +33,14 @@ public class BreedDetail implements Serializable {
      * 养殖主表
      */
     private Long bid;
-
     /**
-     * 检查时温度
+     * 气温主表
      */
-    private Float temperature;
-
+    private Long wid;
     /**
      * 土壤温度
      */
     private Float soilTemperature;
-
-    /**
-     * 检查时湿度
-     */
-    private Float humidity;
 
     /**
      * 土壤湿度
@@ -73,6 +66,10 @@ public class BreedDetail implements Serializable {
      * 创建时间
      */
     private LocalDateTime createTime;
+    /**
+     * ph值
+     */
+    private float ph;
 
 
 }

@@ -19,12 +19,14 @@ public interface IBreedService extends IService<Breed> {
 
     int updateBreed(Breed breed);
 
-    List<BreedListVo> getBreedList(String status, Integer pageSize, Integer pageNum);
+    List<BreedListVo> getBreedList(Integer status, Integer pageSize, Integer pageNum,Integer type);
 
     Breed getBreedById(long id);
 
     Integer updateBreedStatusAndSummary(long id);
 
     Integer deleteBreed(long id);
+
+
 
 }

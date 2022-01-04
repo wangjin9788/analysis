@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -33,7 +33,7 @@ public class BreedOperation implements Serializable {
     /**
      * 养殖主表id关联
      */
-    private Integer bid;
+    private Long bid;
 
     /**
      * 投喂重量
@@ -55,5 +55,13 @@ public class BreedOperation implements Serializable {
      */
     private LocalDateTime createTime;
 
+    /**
+     * 发酵堆编号
+     */
+    private String ferNumber;
+    /**
+     * 操作类型（0：浇水 1：饲喂 2：浇水/饲喂 ）
+     */
+    private Integer type;
 
 }

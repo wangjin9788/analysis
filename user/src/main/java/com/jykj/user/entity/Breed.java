@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 王进
@@ -39,10 +39,6 @@ public class Breed implements Serializable {
      */
     private Long pid;
 
-    /**
-     * 产出重量
-     */
-    private Float produceWeight;
 
     /**
      * 投入时间
@@ -60,8 +56,11 @@ public class Breed implements Serializable {
     private Integer status;
 
     /**
-     * 发酵饲料id
+     * 栏位编号
      */
-    private String feedIds;
-
+    private int number;
+    /**
+     * 类型（0：室内 1：室外）
+     */
+    private int type;
 }

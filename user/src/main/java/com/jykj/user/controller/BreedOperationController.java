@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -28,13 +29,13 @@ public class BreedOperationController {
 
     @ApiOperation("添加养殖操作")
     @PostMapping(value = "/create")
-    public CommonResult createBreedOperation(@RequestBody BreedOperation breed) {
+    public CommonResult createBreedOperation(@RequestBody BreedOperation breed) throws ParseException {
 
         int count = service.createBreedOperation(breed);
         if (count > 0) {
-            return CommonResult.success(count);
+            return CommonResult.success(breed.getBid());
         } else {
-            return CommonResult.failed();
+            return CommonResult.success(0);
         }
     }
 
@@ -54,8 +55,9 @@ public class BreedOperationController {
     @GetMapping(value = "/list/{id}")
     public CommonResult<List<BreedOperation>> getBreedOperationList(@PathVariable(value = "id") long bId,
                                                                     @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<BreedOperation> OperationList = service.getBreedOperationList(bId, pageSize, pageNum);
+                                                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                                                                    @RequestParam(value = "type", defaultValue = "0") Integer type) {
+        List<BreedOperation> OperationList = service.getBreedOperationList(bId, pageSize, pageNum, type);
         return CommonResult.success(OperationList);
     }
 

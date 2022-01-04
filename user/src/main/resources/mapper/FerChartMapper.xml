@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jykj.user.mapper.FerChartMapper">
+
+    <select id="getFerChartTemperatureList" resultType="com.jykj.user.dto.vo.FerChartVo">
+        SELECT
+            f.heap_temperature as heapTemperature,
+            w.temperature,
+            f.heap_humidity as heapHumidity,
+            f.create_time as date
+        FROM
+            fermentation_detail f
+            left join weather w on w.wid=f.wid
+        WHERE
+           f.fid = #{fid}
+        GROUP BY
+            f.create_time
+        ORDER BY f.create_time asc
+    </select>
+    <select id="getFerChartHumidityList" resultType="com.jykj.user.dto.vo.FerChartHumidityVo">
+        SELECT
+            w.humidity ,
+            f.heap_humidity as heapHumidity,
+            f.create_time as date
+        FROM
+
+            fermentation_detail f
+            left join weather w on w.wid=f.wid
+        WHERE
+            f.fid = #{fid}
+        GROUP BY
+            f.create_time
+        ORDER BY f.create_time asc
+    </select>
+</mapper>

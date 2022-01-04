@@ -2,6 +2,7 @@ package com.jykj.user.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jykj.user.dto.vo.BreedListVo;
+import com.jykj.user.dto.vo.TaskRelationVo;
 import com.jykj.user.entity.Breed;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,7 +18,11 @@ import java.util.List;
  * @since 2021-04-23
  */
 public interface BreedMapper extends BaseMapper<Breed> {
-    List<BreedListVo> getBreedInfoList(Page<BreedListVo> page, @Param(value = "status") String status);
+    List<BreedListVo> getBreedInfoList(Page<BreedListVo> page, @Param(value = "status") Integer status,@Param(value = "type")Integer type);
 
     Integer getHowManyDaysApart(@Param(value = "bid") long bid);
+
+    List<TaskRelationVo> getBreedTaskNumberByType(@Param(value = "type")int type);
+
+
 }

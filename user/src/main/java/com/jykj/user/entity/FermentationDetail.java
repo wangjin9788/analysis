@@ -35,20 +35,12 @@ public class FermentationDetail implements Serializable {
      */
     private long fid;
 
-    /**
-     * 检查是当前温度
-     */
-    private Float temperature;
 
     /**
      * 发酵堆温度
      */
     private Float heapTemperature;
 
-    /**
-     * 当前湿度
-     */
-    private Integer humidity;
 
     /**
      * 堆内湿度
@@ -61,13 +53,12 @@ public class FermentationDetail implements Serializable {
     private Float ph;
 
     /**
-     * 原料重量
-     */
-    private Float weight;
-
-    /**
      * 创建时间
      */
     private LocalDateTime createTime;
 
+    /**
+     * 天气id
+     */
+    private long wid;
 }

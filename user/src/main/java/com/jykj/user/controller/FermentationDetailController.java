@@ -2,6 +2,8 @@ package com.jykj.user.controller;
 
 
 import com.jykj.user.common.api.CommonResult;
+import com.jykj.user.dto.BatchDetailParam;
+import com.jykj.user.dto.BatchFerDetailParam;
 import com.jykj.user.dto.vo.FermentationDetailDataVo;
 import com.jykj.user.entity.FermentationDetail;
 import com.jykj.user.service.IFermentationDetailService;
@@ -70,6 +72,17 @@ public class FermentationDetailController {
     @PostMapping("/delete/{id}")
     public CommonResult deleteFermentationDetail(@PathVariable Long id) {
         Integer count = service.deleteFermentationDetail(id);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+    @ApiOperation("批量处理详情")
+    @PostMapping(value = "/batch/detail")
+    public CommonResult batchBreedDetail(@RequestBody List<BatchFerDetailParam> list) {
+
+        int count = service.batchFerDetail(list);
         if (count > 0) {
             return CommonResult.success(count);
         } else {

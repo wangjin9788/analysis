@@ -1,8 +1,10 @@
 package com.jykj.user.service;
 
-import com.jykj.user.entity.Task;
+import com.jykj.user.dto.vo.TaskRelationVo;
+import com.jykj.user.entity.TaskInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,16 +15,23 @@ import java.util.List;
  * @author 王进
  * @since 2021-05-03
  */
-public interface ITaskService extends IService<Task> {
-    int updateTask(Task task);
+public interface ITaskService extends IService<TaskInfo> {
+    int updateTask(TaskInfo TaskInfo);
 
-    int createTask(Task task);
+    int createTask(TaskInfo TaskInfo);
 
     Integer deleteTask(long id);
 
-    Task getTaskInfo(long id);
+    TaskInfo getTaskInfo(long id);
 
-    List<Task> getTaskList(String year, String month, Integer pageSize, Integer pageNum);
+    List<TaskInfo> getTaskList(String year, String month, Integer pageSize, Integer pageNum);
 
-    List<Task> getSchedulerTaskList();
+    List<TaskInfo> getSchedulerTaskList();
+
+    //修改任务状态
+    Integer updateStatus(long id) throws ParseException;
+
+    TaskInfo handleTaskByType(Long contactId, Integer type, Integer number) throws ParseException;
+    List<TaskRelationVo> getTaskRelationList(int type);
+    TaskInfo getNewTaskByType(long contactId, int type);
 }

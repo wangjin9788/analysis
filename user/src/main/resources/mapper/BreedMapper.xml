@@ -10,15 +10,34 @@
                b.produce_weight             AS proWeight,
                concat(bp.soil, bp.evaluate) AS pattern,
                b.feed_ids                   AS feedIds,
-               b.status
+               b.number                     As number,
+               b.status,
+               b.type
         FROM breed b
                  LEFT JOIN breed_pattern bp ON b.pid = bp.pid
-      where  1 = 1
-        <if test="status!=null and status!=''">
-            AND YEAR( b.status ) = #{status}
-        </if>
+        where b.status = #{status}
+          and b.type = #{type}
+        order by b.bid asc
     </select>
     <select id="getHowManyDaysApart" resultType="Integer">
-        select timestampdiff(day,b.input_time,b.produce_time) as cycle  from breed b  where b.bid =#{bid}
+        select timestampdiff(day,b.input_time, b.produce_time) as cycle
+        from breed b
+        where b.bid = #{bid}
     </select>
+    <select id="getBreedTaskNumberByType" resultType="com.jykj.user.dto.vo.TaskRelationVo">
+        SELECT bid   AS id,
+               concat(
+                       CASE type
+                           WHEN 0 THEN
+                               '室内：'
+                           ELSE
+                               '室外：'
+                           END,
+                       number,
+                       '号养殖床'
+                   ) AS number
+        FROM breed
+        GROUP BY bid
+    </select>
+
 </mapper>

@@ -59,5 +59,20 @@ public class Fermentation implements Serializable {
      * 发酵开始时间
      */
     private String ferTime;
-
+    /**
+     * 原料重量
+     */
+    private Float weight;
+    /**
+     * 单前是第几次发酵
+     */
+    private Integer curFermentation;
+    /**
+     * 发酵堆编号
+     */
+    private Integer number;
+    /**
+     *类型（1：堆沤发酵 6：菌种发酵）
+     */
+    private int type;
 }

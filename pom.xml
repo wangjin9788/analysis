@@ -17,25 +17,6 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
-        <!-- mybatis-puls start -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.2</version>
-        </dependency>
-        <!-- mybatis-puls end -->
-        <!-- mybatis-puls 代码生成文档-->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.31</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.3.1.tmp</version>
-        </dependency>
-        <!-- mybatis-puls 代码生成文档  end-->
     </dependencies>
 </project>

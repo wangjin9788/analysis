@@ -20,4 +20,14 @@ public class FermentationDataVo {
     private Integer status;
     //创建时间
     private String ferTime;
+    //原料重量
+    private float weight;
+    /**
+     * 单前是第几次发酵
+     */
+    private Integer curFermentation;
+    /**
+     * 发酵堆编号
+     */
+    private Integer number;
 }

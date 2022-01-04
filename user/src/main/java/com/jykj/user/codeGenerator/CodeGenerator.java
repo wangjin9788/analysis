@@ -111,7 +111,7 @@ public class CodeGenerator {
         // 公共父类
 
         // 写于父类中的公共字
-        strategy.setInclude("task");
+        strategy.setInclude("weather");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);

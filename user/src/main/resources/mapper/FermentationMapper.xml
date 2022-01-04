@@ -10,7 +10,10 @@
         e.assess AS evaluate,
         DATE_FORMAT(f.create_time, "%Y-%m-%d") AS createTime,
         DATE_FORMAT(f.fer_time, "%Y-%m-%d") as ferTime,
-        f.status as status
+        f.weight,
+        f.status as status,
+        f.cur_fermentation as curFermentation,
+        f.number as number
         FROM
         fermentation f
         LEFT JOIN fer_pattern fp ON f.fp_id = fp.fp_id
@@ -23,5 +26,43 @@
         <if test="month!=null and month!=''">
             AND MONTH ( f.create_time ) = #{month}
         </if>
+        order by f.number desc
+    </select>
+    <select id="getFerTaskNumberByType" resultType="com.jykj.user.dto.vo.TaskRelationVo">
+        select #{type},fid as id,concat(number,'发酵堆') as number  from fermentation GROUP BY fid
+    </select>
+    <select id="getCompostingTemperature" resultType="com.jykj.user.dto.CompostingTaskParam">
+        SELECT
+        fer.fid,
+        fer.number,
+        fer.type
+        FROM
+        fermentation_detail f
+        LEFT JOIN fermentation fer on fer.fid=f.fid
+        WHERE
+        f.fid = #{id}
+        AND f.fd_id > (
+        SELECT
+        fd.fd_id
+        FROM
+        fermentation_detail fd
+        WHERE
+        fd.fid = #{id}
+        AND fd.heap_temperature <![CDATA[ >= ]]> 65
+        ORDER BY
+        create_time DESC
+        LIMIT 1
+        )
+        AND f.heap_humidity <![CDATA[ <= ]]> 52
+        LIMIT 1
+    </select>
+    <select id="getFerAllId" resultType="long">
+        SELECT
+            fid
+        FROM
+            fermentation
+        where `status`=0
+        GROUP BY
+            fid;
     </select>
 </mapper>

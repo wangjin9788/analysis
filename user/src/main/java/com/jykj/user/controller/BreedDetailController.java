@@ -2,7 +2,11 @@ package com.jykj.user.controller;
 
 
 import com.jykj.user.common.api.CommonResult;
+import com.jykj.user.dto.BatchDetailParam;
+import com.jykj.user.dto.vo.BreedChartVo;
+import com.jykj.user.dto.vo.BreedDetailVo;
 import com.jykj.user.dto.vo.BreedListVo;
+import com.jykj.user.dto.vo.FerChartVo;
 import com.jykj.user.entity.Breed;
 import com.jykj.user.entity.BreedDetail;
 import com.jykj.user.service.IBreedDetailService;
@@ -10,6 +14,7 @@ import com.jykj.user.service.IBreedService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,10 +59,10 @@ public class BreedDetailController {
     }
     @ApiOperation("获取养殖信息")
     @GetMapping(value = "/list/{id}")
-    public CommonResult<List<BreedDetail>> getBreedDetailList(@PathVariable(value = "id") long bId,
+    public CommonResult<List<BreedDetailVo>> getBreedDetailList(@PathVariable(value = "id") long bId,
                                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<BreedDetail> evaluateList = service.getBreedDetailList(bId,pageSize,pageNum);
+        List<BreedDetailVo> evaluateList = service.getBreedDetailList(bId,pageSize,pageNum);
         return CommonResult.success(evaluateList);
     }
 
@@ -77,5 +82,22 @@ public class BreedDetailController {
         } else {
             return CommonResult.failed();
         }
+    }
+    @ApiOperation("批量处理详情")
+    @PostMapping(value = "/batch/detail")
+    public CommonResult batchBreedDetail(@RequestBody List<BatchDetailParam> list) {
+
+        int count = service.batchBreedDetail(list);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+    @GetMapping("/temperature/{id}")
+    @ApiOperation("获取温度列表")
+    public CommonResult<List<BreedChartVo>> getBreedChartTemperature(@PathVariable long id){
+        List<BreedChartVo> temperatureList = service.getBreedChartTemperature(id);
+        return CommonResult.success(temperatureList);
     }
 }
