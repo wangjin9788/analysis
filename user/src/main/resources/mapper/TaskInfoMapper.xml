@@ -8,11 +8,12 @@
                t.task_time    AS taskTime,
                t.status,
                t.create_time  AS createTime,
-               t.type
+               t.type,
+               t.number
         FROM task_info t
         WHERE t.task_time = #{time}
           and status = 0
-        order by desc
+
     </select>
     <select id="getNewTaskByType" resultType="com.jykj.user.entity.TaskInfo">
         SELECT t.tid,

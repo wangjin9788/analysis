@@ -29,19 +29,20 @@ public class Scheduler {
     public void testTasks() {
         List<TaskInfo> list = service.getSchedulerTaskList();
         StringBuffer buff = new StringBuffer();
-        buff.append("<tr><td>时间</td><td>内容</td></tr>");
+        buff.append("<html><body><table cellpadding=10><tr><td  width=300px>时间</td><td width=300px>内容</td></tr>");
         boolean isSend = false;
         for (TaskInfo t : list) {
             isSend = true;
-            buff.append("<tr><td>" + t.getTaskTime() + "</td><td>" + t.getContactId() + t.getTaskContent() + t.getTaskTime() + "</td></tr>");
-        }
 
+            buff.append("<tr><td width=300px>" + t.getTaskTime() + "</td><td width=300px>" + t.getNumber() + t.getTaskContent() + "</td></tr>");
+        }
+        buff.append("</table></body></html>");
         if (isSend) {
             for (TaskInfo t : list) {
                 t.setStatus(1);
                 service.updateTask(t);
             }
-            mailUtils.sendTemplateMail(ADDRESSEE, title, buff.toString(), "index.html");
+        mailUtils.sendHtmlMail(ADDRESSEE, title, buff.toString());
         }
         System.out.println("定时任务执行时间：");
     }
