@@ -50,13 +50,16 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, TaskInfo> implement
     public int createTask(TaskInfo task) {
         task.setStatus(0);
         task.setCreateTime(LocalDateTime.now());
-        if (task.getType() > 0) {
+        TaskDictionaryVo taskDictionary = dictionaryService.getIntervalList(task.getType());
+        if (task.getType() == 0|| task.getType()==6) {
             Fermentation fer = ferMapper.selectById(task.getContactId());
-            TaskDictionaryVo taskDictionary = dictionaryService.getIntervalList(task.getType());
-            task.setTaskContent(taskDictionary.getTaskContent());
             task.setNumber(fer.getNumber());
-            task.setTimeIndex(0);
+        }else{
+            Breed breed = breedMapper.selectById(task.getContactId());
+            task.setNumber(breed.getNumber());
         }
+        task.setTaskContent(taskDictionary.getTaskContent());
+        task.setTimeIndex(0);
         return baseMapper.insert(task);
     }
 

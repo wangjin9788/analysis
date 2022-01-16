@@ -39,7 +39,7 @@
 
         FROM
             exp_pay ep
-        where YEAR(ep.create_time)=2021
+        where YEAR(ep.create_time)=#{time}
         UNION all
         SELECT
             any_value ( '营收') AS type,
