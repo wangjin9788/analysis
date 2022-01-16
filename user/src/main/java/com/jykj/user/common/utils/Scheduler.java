@@ -25,7 +25,7 @@ public class Scheduler {
     final static String ADDRESSEE = "980642298@qq.com";
     final static String title = "今天任务";
 
-    @Scheduled(cron = "*/5 * * * * ?")
+    @Scheduled(cron = "0 0 1 * * ?")
     public void testTasks() {
         List<TaskInfo> list = service.getSchedulerTaskList();
         StringBuffer buff = new StringBuffer();
